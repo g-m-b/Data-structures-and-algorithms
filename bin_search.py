@@ -1,19 +1,23 @@
-def  bin_search(a,v,l,r):
-    if r>=l:
-        mid=l+r//2
-        if v==a[mid]:
+def  bin_search(input_list,value,left,right):
+    """
+    recursive implementation of binary search
+    input_params:
+       input_list, value to search, left index, right index
+    """
+    if right>=left:
+        mid=(left+right)//2
+        if value==input_list[mid]:
             return True
-        elif v<a[mid]:
-            return bin_search(a,v,l,mid-1)
+        elif value<input_list[mid]:
+            return bin_search(input_list,value,left,mid-1)
         else:
-            return bin_search(a,v,mid+1,r)
+            return bin_search(input_list,value,mid+1,right)
     else:
         return False
 if __name__ == '__main__':
-    a=[1,2,3,4,5,6]
-    v=6
-    x=bin_search(a,v,0,len(a)-1)
-    if x=='True':
+    input_list=[1,2,3,4,5,6]
+    value=6
+    if bin_search(input_list,value,0,len(input_list)-1):
         print('Element is present in list')
     else:
         print('Element is not present in the list')
